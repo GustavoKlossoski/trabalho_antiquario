@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+
+<main class="container py-4">
+    <div class="card shadow-sm col-md-8 mx-auto">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">
+                <i class="bi bi-person-plus"></i>
+                Cadastrar Novo Usuário / Login
+            </h4>
+        </div>
+
+        <div class="card-body">
+            <form action="/admin/login/cadastrar" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha" required>
+                </div>
+
+                <div class="d-flex justify-content-between pt-2">
+                    <a href="/admin/login/listar" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Voltar
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i> Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
