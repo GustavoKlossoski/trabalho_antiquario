@@ -1,0 +1,102 @@
+<%- include('../partials/header') %>
+    <%- include('../partials/menu') %>
+
+        <main class="container py-4">
+            <div class="card shadow-sm">
+                <div class="card-header text-white" style="background-color: #75162D">
+                    <h4 class="mb-0">
+                        <i class="bi bi-box-seam"></i>
+                        <%= produto ? 'Editar Produto' : 'Cadastro de Produto' %>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form action="<%= produto ? `/admin/produtos/atualizar/${produto.id}` : '/admin/produtos/cadastrar' %>" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label class="form-label">Nome do produto</label>
+                                <input type="text" name="nome" class="form-control" value="<%= produto ? produto.nome : '' %>" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Categoria</label>
+                                <select name="categoria" class="form-select" required>
+                                    <option value="">
+                                        Selecione uma categoria
+                                    </option>
+                                    <% for (let i=0; i < categorias.length; i++) { %>
+                                        <option value="<%= categorias[i].nome %>" <%= produto && produto.categoria === categorias[i].nome ? 'selected' : '' %>>
+                                            <%= categorias[i].nome %>
+                                        </option>
+                                        <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Valor</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">R$</span>
+                                    <input type="number" name="valor" class="form-control" step="0.01" value="<%= produto ? produto.valor : '' %>" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Estoque</label>
+                                <input type="number" name="estoque" class="form-control" value="<%= produto ? produto.estoque : '' %>" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Imagem</label>
+                                <input type="file" name="imagem" class="form-control" accept="image/*" <%= produto ? '' : 'required' %>>
+                                <% if (produto && produto.imagem) { %>
+                                    <small class="text-muted">Imagem atual: <%= produto.imagem %></small>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Descrição</label>
+                            <textarea name="descricao" class="form-control" rows="4"><%= produto ? produto.descricao : '' %></textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Fabricação</label>
+                                <input type="number" name="fabricacao" class="form-control" placeholder="Ex: 1985"
+                                    value="<%= produto ? produto.fabricacao : '' %>" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Conservação</label>
+                                <select name="conservacao" class="form-select" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="Excelente / Impecável" <%= produto && produto.conservacao === 'Excelente / Impecável' ? 'selected' : '' %>>Excelente / Impecável</option>
+                                    <option value="Bom Estado (Pequenas marcas do tempo)" <%= produto && produto.conservacao === 'Bom Estado (Pequenas marcas do tempo)' ? 'selected' : '' %>>Bom Estado (Marcas do tempo)</option>
+                                    <option value="Restaurado" <%= produto && produto.conservacao === 'Restaurado' ? 'selected' : '' %>>Restaurado</option>
+                                    <option value="Para Restauro / Acervo" <%= produto && produto.conservacao === 'Para Restauro / Acervo' ? 'selected' : '' %>>Para Restauro / Reparo</option>
+                                    <option value="Pequenas Avarias / Desgaste Visível" <%= produto && produto.conservacao === 'Pequenas Avarias / Desgaste Visível' ? 'selected' : '' %>>Pequenas Avarias</option>
+                                    <option value="Nunca Usado (Peça de Época)" <%= produto && produto.conservacao === 'Nunca Usado (Peça de Época)' ? 'selected' : '' %>>Nunca Usado (Peça de Época)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Material</label>
+                                <input type="text" name="material" class="form-control" value="<%= produto ? produto.material : '' %>" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" name="destaque" value="1" class="form-check-input" id="destaqueCheck" <%= produto && produto.destaque == 1 ? 'checked' : '' %>>
+                            <label class="form-check-label fw-bold" for="destaqueCheck" style="color: #75162D;">
+                                Marcar como Produto em Destaque (Exibir na Página Inicial)
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn text-white" style="background-color: #75162D;">
+                            <i class="bi bi-check-circle"></i>
+                            <%= produto ? 'Salvar alterações' : 'Cadastrar' %>
+                        </button>
+                        <a href="/admin/produtos" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <%- include('../partials/footer') %>

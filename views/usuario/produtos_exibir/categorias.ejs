@@ -1,0 +1,27 @@
+<%- include('../partials/header_usuario') %>
+
+<div class="container-menu-categorias">
+    <%- include('../partials/menu_usuario') %>
+</div>
+
+<main class="container-categorias">
+    <div class="divisoria-decorativa">
+        <img src="/imagens/arabesco_categorias.png" class="icone-decorativo" alt="Decorativo">
+    </div>
+
+    <h1 class="titulo-pagina">CATEGORIAS</h1>
+
+    <!-- Cards de Categorias -->
+    <div class="grid-categorias">
+        <% categorias.forEach(categoria => { %>
+            <a href="/admin/produtos/categoria/<%= categoria.id %>" class="card-categoria">
+                <div class="card-conteudo">
+                    <img src="/uploads/<%= categoria.imagem %>" alt="<%= categoria.nome %>" class="img-categoria">
+                    <span class="nome-categoria"><%= categoria.nome %></span>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+</main>
+
+<%- include('../partials/footer_usuario') %>

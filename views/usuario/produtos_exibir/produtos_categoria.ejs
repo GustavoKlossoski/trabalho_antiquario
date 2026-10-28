@@ -1,0 +1,30 @@
+<%- include('../partials/header_usuario') %>
+
+<div class="container-menu-categorias">
+    <%- include('../partials/menu_usuario') %>
+</div>
+
+<main class="container my-5 pagina-categoria-fundo">
+
+  <!-- Título da Categoria Selecionada com a classe medium aplicada -->
+  <h2 class="fw-bold mb-4 titulo-pagina-categorias text-center birthstone-bounce-medium">
+    <%= typeof categoria === 'object' ? categoria.nome : categoria %>
+  </h2>
+  
+  <!-- Lista de Produtos da Categoria -->
+  <div class="row g-4">
+    <% if (produtos && produtos.length > 0) { %>
+      <% produtos.forEach(function(produto) { %>
+        <div class="col-md-4">
+          <%- include('../../usuario/componentes/card', { produto: produto }) %>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <div class="col-12 text-center py-5">
+        <p class="text-muted">Nenhum produto cadastrado nesta categoria no momento.</p>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('../partials/footer_usuario') %>

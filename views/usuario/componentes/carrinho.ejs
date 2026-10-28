@@ -1,0 +1,93 @@
+<div class="container my-5">
+    <!-- Cabeçalho e Botão Voltar -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="titulo-carrinho fw-bold" style="color: #3b0e0e; letter-spacing: 2px;">CARRINHO</h2>
+        <a href="javascript:history.back()" class="btn px-4 text-white" style="background-color: #3b0e0e; border-radius: 20px;">Voltar</a>
+    </div>
+    <hr class="mb-4" style="border-top: 1px solid #3b0e0e;">
+
+    <% if (typeof itensCarrinho !== 'undefined' && itensCarrinho.length > 0) { %>
+        <% let subtotalGeral = 0; %>
+        
+        <!-- Lista de Itens do Carrinho -->
+        <div class="d-flex flex-column gap-3 mb-5">
+            <% itensCarrinho.forEach(function(item) { %>
+                <% let valorTotalItem = item.valor * item.quantidade; %>
+                <% subtotalGeral += valorTotalItem; %>
+
+                <div class="card p-3 shadow-sm" style="border: 1px solid #c8b9b9; border-radius: 4px;">
+                    <div class="row align-items-center">
+                        <!-- Checkbox e Imagem -->
+                        <div class="col-md-5 d-flex align-items-center gap-3">
+                            <input type="checkbox" class="form-check-input" style="width: 22px; height: 22px; border-color: #3b0e0e;">
+                            <img src="/uploads/<%= item.imagem %>" alt="<%= item.nome %>" style="width: 75px; height: 75px; object-fit: cover;" class="border">
+                            <div>
+                                <h5 class="fw-bold mb-1" style="color: #3b0e0e;"><%= item.nome %></h5>
+                                <p class="mb-0 text-muted" style="font-size: 13px;">Material: <%= item.material %></p>
+                                <p class="mb-0 text-muted" style="font-size: 13px;">Ano: <%= item.fabricacao %></p>
+                            </div>
+                        </div>
+
+                        <!-- Quantidade, Valor Unitário, Total e Ação -->
+                        <div class="col-md-7 d-flex justify-content-between align-items-center border-start ps-4">
+                            <div>
+                                <p class="mb-1" style="font-size: 14px;">Quantidade: <%= item.quantidade %></p>
+                                <p class="mb-0" style="font-size: 14px;">Valor Unitário: <%= Number(item.valor).toFixed(2).replace('.', ',') %></p>
+                            </div>
+                            <div class="text-end">
+                                <span class="d-block mb-2 fw-bold" style="font-style: italic; color: #3b0e0e; font-size: 15px;">
+                                    Valor Total: <%= Number(valorTotalItem).toFixed(2).replace('.', ',') %>
+                                </span>
+                                <a href="/carrinho/remover/<%= item.id %>" class="text-dark" title="Remover item">
+                                    <i class="bi bi-trash fs-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+
+        <!-- Bloco de Resumo e Finalização -->
+        <div class="row justify-content-end">
+            <div class="col-md-5">
+                <table class="table table-bordered mb-4" style="border-color: #3b0e0e;">
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-uppercase" style="color: #3b0e0e; font-size: 14px;">Subtotal</td>
+                            <td class="text-end fw-bold" style="font-size: 14px;">R$ <%= Number(subtotalGeral).toFixed(2).replace('.', ',') %></td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-uppercase" style="color: #3b0e0e; font-size: 14px;">Frete</td>
+                            <td class="text-end fw-bold" style="font-size: 14px;">R$ 10,00</td>
+                        </tr>
+                        <tr style="background-color: #fcf8f8;">
+                            <td class="fw-bold text-uppercase" style="color: #3b0e0e; font-size: 15px;">Total</td>
+                            <td class="text-end fw-bold" style="color: #3b0e0e; font-size: 15px;">R$ <%= Number(subtotalGeral + 10).toFixed(2).replace('.', ',') %></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Formulário de Pagamento alinhado à direita -->
+                <div class="text-end">
+                    <form action="/admin/carrinho/finalizar-pagamento" method="POST">
+                        <input type="hidden" name="usuario_id" value="<%= typeof usuarioId !== 'undefined' ? usuarioId : 1 %>">
+                        <button type="submit" class="btn text-white px-5 py-2 fw-bold" style="background-color: #3b0e0e; border-radius: 20px; font-size: 16px;">
+                            Finalizar Pedido
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <% } else { %>
+        <!-- Estado Vazio -->
+        <div class="text-center py-5">
+            <i class="bi bi-cart-x display-1 text-muted"></i>
+            <p class="text-muted mt-3 fs-5">O seu carrinho está vazio.</p>
+            <a href="/admin/categorias_lista" class="btn text-white mt-2 px-4 py-2" style="background-color: #3b0e0e; border-radius: 20px;">
+                Continuar Comprando
+            </a>
+        </div>
+    <% } %>
+</div>

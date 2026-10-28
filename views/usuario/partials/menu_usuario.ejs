@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-relicario">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/imagens/logo_relicario.png" height="30" class="d-inline-block align-text-top me-1"> Relicário
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menuPrincipal"
+      aria-controls="menuPrincipal"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <!-- Links de navegação central/esquerda -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a href="/admin/categorias_lista" class="nav-link">Categorias</a>
+        </li>
+        <li class="nav-item">
+          <a href="/sobre" class="nav-link">Sobre</a>
+        </li>
+      </ul>
+
+      <!-- Itens do lado direito (Carrinho e Perfil) alinhados para telas grandes e mobile -->
+      <ul class="navbar-nav align-items-lg-center gap-2">
+        <li class="nav-item">
+          <a href="/carrinho" class="nav-link nav-icon">
+            <i class="bi bi-cart3 fs-5"></i> <span class="d-lg-none ms-2">Carrinho</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            <i class="bi bi-person-circle fs-5"></i> <span class="d-lg-none ms-2">Perfil</span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="">Usuário</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/admin">Administrador</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,26 @@
+<div class="card border-marrom rounded-4 p-3 shadow-sm d-flex flex-column justify-content-between mx-auto produto-card">
+  
+  <!-- Link que levar para os detalhes do produto -->
+  <a href="/admin/produtos/detalhe/<%= produto.id %>" class="text-decoration-none text-dark flex-grow-1 d-flex flex-column">
+    <!-- Container da imagem com altura reduzida -->
+    <div class="produto-imagem-container">
+      <img src="/uploads/<%= produto.imagem %>" class="produto-imagem" alt="Produto">
+    </div>
+
+    <!-- Nome e valor -->
+    <div class="card-body text-center p-1 d-flex flex-column justify-content-center mt-2">
+      <div class="mb-2">
+        <h5 class="card-title fw-bold text-dark m-0 text-truncate produto-titulo" title="<%= produto.nome %>"><%= produto.nome %></h5>
+        <p class="card-text fw-bold m-0 produto-preco mt-1">
+          R$ <%= Number(String(produto.valor).replace(',', '.' )).toFixed(2).replace('.', ',') %>
+        </p>
+      </div>
+    </div>
+  </a>
+
+  <div class="text-center mt-2">
+    <a href="/admin/produtos/detalhe/<%= produto.id %>" class="btn w-50 py-2 rounded-pill text-white d-flex align-items-center justify-content-center gap-2 mx-auto produto-btn">
+      <i class="bi bi-cart-fill"></i>
+    </a>
+  </div>
+</div>
