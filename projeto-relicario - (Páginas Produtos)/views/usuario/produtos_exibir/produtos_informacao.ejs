@@ -1,0 +1,90 @@
+<%- include('../partials/header_usuario') %>
+
+  <div class="container-menu-categorias">
+    <%- include('../partials/menu_usuario') %>
+  </div>
+
+  <main class="container my-5 py-3">
+    <!-- Seção Principal de Detalhes do Produto -->
+    <div class="row align-items-center mb-5 pb-4">
+      <!-- Coluna Esquerda: Imagem do Produto -->
+      <div class="col-md-6 text-center pe-md-5">
+        <div class="text-start mb-3">
+          <a href="javascript:history.back()" class="btn btn-voltar px-4 rounded-pill shadow-sm">Voltar</a>
+        </div>
+
+        <img src="/uploads/<%= produto.imagem %>" alt="<%= produto.nome %>"
+          class="img-fluid rounded produto-detalhe-imagem">
+      </div>
+
+      <!--ADICIONAR BOTÃO VOLTAR-->
+
+
+      <!-- Divisória vertical -->
+      <div class="col-md-6 ps-md-5 position-relative style-border-left">
+        <!-- Título do Produto -->
+        <h1 class="fw-bold mb-3 text-uppercase produto-detalhe-titulo">
+          <%= produto.nome %>
+        </h1>
+
+        <!-- Descrição -->
+        <p class="text-muted mb-4 fs-5 produto-detalhe-descricao">
+          <%= produto.descricao %>
+        </p>
+
+        <!-- Tags de Informações (Ano/Fabricação e Material) -->
+        <div class="d-flex gap-3 mb-4">
+          <% if (produto.fabricacao) { %>
+            <span class="badge rounded-pill px-4 py-2 produto-detalhe-badge">
+              <%= produto.fabricacao %>
+            </span>
+            <% } %>
+
+              <% if (produto.material) { %>
+                <span class="badge rounded-pill px-4 py-2 produto-detalhe-badge">
+                  <%= produto.material %>
+                </span>
+                <% } %>
+        </div>
+
+        <hr class="my-4 produto-linha">
+
+        <!-- Quantidade e Conservação -->
+        <div class="row mb-4 fs-5 produto-detalhe-info">
+          <div class="col-6">
+            <strong>Quantidade Disponível:</strong>
+            <%= produto.estoque %>
+          </div>
+          <div class="col-6">
+            <strong>Conservação:</strong>
+            <%= produto.conservacao %>
+          </div>
+        </div>
+
+        <!-- Preço e Botão de Comprar -->
+        <div class="text-center mt-4">
+          <h2 class="fw-bold mb-3 produto-detalhe-preco">
+            R$ <%= Number(produto.valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+              %>
+          </h2>
+          <form action="/carrinho/adicionar/<%= produto.id %>" method="POST">
+            <button type="submit" class="btn produto-detalhe-btn-comprar  px-5 py-2 rounded-pill shadow-sm text-white">
+              Adicionar ao Carrinho
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisória com Arabesco -->
+    <div class="arabesco-produto">
+      <img src="/imagens/arabesco_categorias.png" class="icone-decorativo">
+    </div>
+
+
+    <!--ADICIONAR SEÇÃO DE PRODUTOS SEMELHANTES-->
+
+
+  </main>
+
+  <%- include('../partials/footer_usuario') %>

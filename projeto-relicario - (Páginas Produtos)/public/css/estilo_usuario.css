@@ -1,0 +1,675 @@
+/* =================================================_
+   FONTE IMPORTADA: POPPINS
+   ================================================= */
+
+.poppins-thin {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    background: url('/imagens/fundo_categorias_produtos.png') center / cover fixed no-repeat !important;
+    color: #3b0e0e;
+    position: relative;
+}
+
+.border-marrom {
+    border-color: #3b0e0e !important;
+}
+
+.birthstone-bounce-regular {
+  font-family: "Birthstone Bounce", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.birthstone-bounce-medium {
+  font-family: "Birthstone Bounce", cursive;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.navbar-relicario {
+    position: relative !important;
+    width: 100%;
+    background-color: #3b0e0e !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    z-index: 3;
+}
+
+.navbar-relicario .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.navbar-relicario .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.navbar-relicario .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.navbar-relicario .nav-icon {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.produto-card {
+    width: 100% !important;
+    max-width: 350px;
+    height: 420px;
+    background-color: #fff;
+    border-color: #3b0e0e !important;
+    margin: 0 auto;
+}
+
+.produto-imagem-container {
+    height: 210px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.produto-imagem {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
+
+.produto-titulo {
+    font-family: 'Poppins', 'Quicksand', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #3b0e0e;
+}
+
+.produto-preco {
+    color: #3b0e0e;
+    font-size: 1.15rem;
+}
+
+.produto-btn {
+    background-color: #3b0e0e;
+    border: none;
+}
+
+.produto-btn:hover,
+.produto-btn:focus {
+    background-color: #2d0c0c;
+    border: none;
+}
+
+.footer-vitral {
+    margin-bottom: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-vitral img {
+    width: 600px;
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-relicario {
+    background-color: #2D0000;
+    padding-top: 50px !important;
+}
+
+.banner-arabesco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px; /* Controla a distância entre o arabesco e o título RELICÁRIO */
+    z-index: 3;
+}
+
+.banner-arabesco img {
+    max-width: 200px; /* Ajuste o tamanho proporcional do arabesco da prototipação */
+    height: auto;
+}
+
+.banner-principal {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 580px;
+    overflow: hidden;
+}
+
+.banner-principal .container {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.banner-titulo-principal {
+    letter-spacing: 4px;
+    color: #fdfaf6;
+    font-size: 100px;
+    font-family: 'Times New Roman', serif;
+    margin-bottom: 5px;
+}
+
+.banner-subtitulo-bounce {
+    color: #fdfaf6;
+    font-size: 75px;
+    line-height: 1;
+    margin-bottom: 50px;
+}
+
+.banner-subtitulo-citacao {
+    color: #fdfaf6;
+    font-size: 35px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.banner-btn-colecao {
+    background-color: #ffffff;
+    color: #3b0e0e;
+    border: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 8px 28px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.titulo-destaques {
+    color: #3b0e0e;
+}
+
+.container-menu-categorias {
+    background-color: #3b0e0e !important;
+    width: 100%;
+    min-height: 80px;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.container-categorias {
+    padding: 20px 20px 60px 20px;
+    text-align: center;
+}
+
+.divisoria-arabesco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 30px auto 40px auto;
+}
+
+/* Controla o tamanho da imagem do arabesco das categorias */
+.divisoria-arabesco .arabesco-categorias {
+    width: 100%;       /* Faz ela se adaptar ao espaço */
+    max-width: 1000px;  /* Diminua ou aumente este valor para o tamanho desejado */
+    height: auto;      /* Mantém a proporção original */
+}
+
+.arabesco-produto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.arabesco-produto .icone-decorativo {
+    max-width: 1200px; /* Defina um tamanho máximo ideal para o arabesco */
+    width: 100%;      /* Faz com que ele seja responsivo */
+    height: auto;     /* Mantém a proporção original da imagem */
+}
+
+.titulo-pagina {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-size: 60px;
+    letter-spacing: 3px;
+    color: #3b0e0e;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.titulo-pagina-categorias {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-size: 80px;
+    letter-spacing: 3px;
+    color: #3b0e0e;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, 280px);
+    justify-content: center;
+    gap: 40px 60px;
+    margin: 60px auto;
+}
+
+.card-categoria {
+    background-color: #3b0808;
+    background-image: url('/imagens/fundo_card_categorias.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 280px;
+    height: 330px;
+    border-radius: 140px 140px 20px 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-categoria:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.card-conteudo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-conteudo img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.nome-categoria {
+    color: #f5f5f5;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.produto-detalhe-imagem {
+    max-height: 480px;
+    object-fit: contain;
+}
+
+.produto-detalhe-titulo {
+    color: #3b0e0e;
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    letter-spacing: 2px;
+}
+
+.produto-detalhe-descricao {
+    line-height: 1.6;
+}
+
+.produto-detalhe-badge {
+    background-color: #69103B;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.produto-linha {
+    border-color: #3b0e0e;
+    height: 2px;
+}
+
+.produto-detalhe-info {
+    color: #3b0e0e;
+}
+
+.produto-detalhe-preco {
+    color: #3b0e0e;
+    font-size: 2.5rem;
+}
+
+.produto-detalhe-btn-comprar {
+    background-color: #2d0000;
+}
+
+.produto-detalhe-btn-comprar:hover {
+    background-color: #4a0000;
+    color: #ffffff;
+}
+
+.divisoria-arabesco-icone {
+    height: 20px;
+    opacity: 0.8;
+}
+
+.titulo-semelhantes {
+    color: #3b0e0e;
+}
+
+/* =================================================_
+   ESTILOS DA PÁGINA SOBRE (RELICÁRIO)
+   ================================================= */
+
+/* Menu Transparente */
+.navbar-relicario {
+    position: absolute !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Banner em Largura Total */
+.banner-full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
+
+.banner-img {
+    min-height: 350px;
+    max-height: 550px;
+    width: 100%;
+}
+
+.banner-content {
+    z-index: 5;
+}
+
+/* Seção Superior (Fundo Branco) */
+.secao-topo-historia {
+    background-color: #ffffff;
+}
+
+.arabesco-topo {
+    max-height: 35px;
+    filter: sepia(1) hue-rotate(320deg) saturate(3); /* Deixa o arabesco com tom dourado/bronze se necessário */
+}
+
+.titulo-nossa-historia-claro {
+    font-family: serif;
+    letter-spacing: 2px;
+    color: #4a0e17; /* Tom vinho escuro para destacar no fundo branco */
+}
+
+.citacao-nossa-historia-claro {
+    font-style: italic;
+    color: #5a5a5a;
+}
+
+/* Faixa de Renda ao Centro */
+.faixa-renda-bg {
+    background-image: url('/imagens/sobre_renda.png');
+    background-repeat: repeat-x;
+    background-position: center;
+    height: 70px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    z-index: 2;
+}
+
+/* Seção Inferior (Fundo Vinho/Bordô) */
+.secao-fundo-historia {
+    background-color: #4a0e17; /* Tom elegante idêntico à referência */
+    color: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+    margin-top: -35px; /* Puxa levemente para encaixar embaixo da renda */
+    padding-top: 50px !important;
+}
+
+/* Textos descritivos comuns */
+.texto-historia {
+    line-height: 1.8;
+}
+
+/* Quadros / Molduras */
+.moldura-quadro {
+    max-width: 280px;
+    margin: 0 auto;
+    filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.3));
+}
+
+/* =================================================_
+   ESTILOS DA PÁGINA DO CARRINHO (RELICÁRIO)
+   ================================================= */
+
+/* Título e Botão Voltar */
+.titulo-carrinho {
+    font-family: serif;
+    letter-spacing: 1px;
+    color: #4a0e17; /* Tom vinho da marca */
+}
+
+.btn-voltar {
+    background-color: #4a0e17;
+    color: #ffffff;
+    border: none;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #350910;
+    color: #ffffff;
+}
+
+/* Cards dos Produtos no Carrinho */
+.item-carrinho-card {
+    border: 1px solid #dcd2c4 !important;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.produto-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1px solid #eee;
+}
+
+.produto-titulo-carrinho {
+    font-family: serif;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.valor-total-item {
+    font-style: italic;
+    color: #4a0e17;
+    font-size: 0.95rem;
+}
+
+/* Checkbox Personalizado (borda vinho) */
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border-color: #4a0e17;
+    cursor: pointer;
+}
+
+.custom-checkbox:checked {
+    background-color: #4a0e17;
+    border-color: #4a0e17;
+}
+
+/* Tabela de Resumo (Subtotal, Frete e Total) */
+.tabela-resumo {
+    border-color: #4a0e17 !important;
+    font-size: 0.9rem;
+}
+
+.tabela-resumo td {
+    background-color: #fff;
+    color: #333;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.tabela-total-linha td {
+    border-top: 2px solid #4a0e17 !important;
+}
+
+/* Botão Finalizar Pedido */
+.btn-finalizar {
+    background-color: #4a0e17;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.btn-finalizar:hover {
+    background-color: #350910;
+    color: #fff;
+}
+
+
+@media (min-width: 768px) {
+    .style-border-left {
+        border-left: 3px solid rgba(59, 14, 14, 1);
+    }
+}
+

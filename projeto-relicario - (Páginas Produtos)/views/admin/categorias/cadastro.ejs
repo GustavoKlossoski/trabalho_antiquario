@@ -1,0 +1,66 @@
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+
+<main class="container py-4">
+
+    <div class="card shadow-sm">
+
+        <div class="card-header text-white" style="background-color: #560B18">
+            <h4 class="mb-0">
+                <i class="bi bi-tags"></i>
+                <%= categoria ? 'Editar Categoria' : 'Cadastro de Categoria' %>
+            </h4>
+        </div>
+
+        <div class="card-body">
+
+            <form action="<%= categoria ? `/admin/categorias/atualizar/${categoria.id}` : '/admin/categorias/cadastrar' %>" method="POST" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="nome" class="form-label">
+                        Nome da categoria
+                    </label>
+                    <input type="text"
+                        class="form-control"
+                        id="nome"
+                        name="nome"
+                        value="<%= categoria ? categoria.nome : '' %>"
+                        required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Imagem</label>
+                    <input type="file" name="imagem" class="form-control" accept="image/*" <%= categoria ? '' : 'required' %>>
+                    <% if (categoria && categoria.imagem) { %>
+                        <small class="text-muted">Imagem atual: <%= categoria.imagem %></small>
+                    <% } %>
+                </div>
+
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">
+                        Descrição
+                    </label>
+                    <textarea
+                        class="form-control"
+                        id="descricao"
+                        name="descricao"
+                        rows="3"><%= categoria ? categoria.descricao : '' %></textarea>
+                </div>
+
+                <button type="submit" class="btn text-white" style="background-color: #560B18">
+                    <i class="bi bi-check-circle"></i>
+                    <%= categoria ? 'Salvar alterações' : 'Cadastrar' %>
+                </button>
+
+                <a href="/admin/categorias" class="btn btn-secondary">
+                    Cancelar
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+
+</main>
+
+<%- include('../partials/footer') %>

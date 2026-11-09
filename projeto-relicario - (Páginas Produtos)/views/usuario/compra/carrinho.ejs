@@ -1,0 +1,88 @@
+<%- include('../partials/header_usuario') %>
+
+</div>
+
+  <!-- Menu Próprio e Exclusivo para esta Página -->
+  <div class="w-100 py-3 px-4 border-bottom">
+  <div class="d-flex align-items-center justify-content-between w-100">
+
+    <!-- Lado esquerdo: Logo e Links -->
+    <div class="d-flex align-items-center gap-4">
+      <a class="text-decoration-none d-flex align-items-center m-0" href="/">
+        <img src="/imagens/logo_relicario.png" alt="Logo" style="height: 35px;">
+      </a>
+      <a class="text-decoration-none" style="color: #3b0e0e; font-size: 1.1rem;" href="/usuario/categorias_lista">Categorias</a>
+      <a class="text-decoration-none" style="color: #3b0e0e; font-size: 1.1rem;" href="/usuario/sobre">Sobre</a>
+    </div>
+
+  </div>
+
+  <div class="container my-5">
+
+    <!-- Cabeçalho da Página com o botão Voltar -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="titulo-carrinho fw-bold m-0">CARRINHO</h2>
+      <a href="javascript:history.back()" class="btn btn-voltar px-4 rounded-pill shadow-sm">Voltar</a>
+    </div>
+    <hr class="mb-4">
+
+    <!-- Lista de Itens do Carrinho -->
+    <div>
+      <% if (itens && itens.length> 0) { %>
+        <% itens.forEach(function (item) { %>
+          <% const produto=item.produto; %>
+            <%- include('card_compra', { item, produto }) %>
+              <% }); %>
+
+                <div class="mb-3">
+                  <form action="/carrinho/limpar" method="POST" class="m-0">
+                    <button type="submit"
+                      class="btn btn-link text-muted text-decoration-none p-0 border-0 bg-transparent">
+                      Limpar carrinho
+                    </button>
+                  </form>
+                </div>
+                <% } else { %>
+                  <div class="col-12 text-center py-5">
+                    <p class="text-muted">Nenhum produto adicionado ao carrinho.</p>
+                  </div>
+                  <% } %>
+    </div>
+
+    <!-- Tabela -->
+    <div class="row justify-content-end mt-4">
+      <div class="col-md-5">
+        <table class="table table-bordered tabela-resumo mb-4">
+          <tbody>
+            <tr>
+              <!--Variavel usando valores cadastrados-->
+              <td class="fw-bold text-uppercase">Subtotal</td>
+              <td class="text-end fw-bold">
+                R$ <%= subtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %>
+              </td>
+            </tr>
+            <tr>
+              <!--Frete fixo-->
+              <td class="fw-bold text-uppercase">Frete</td>
+              <td class="text-end fw-bold">
+                <%= frete===0 ? 'R$ 0,00' : 'R$ ' + frete.toLocaleString('pt-BR', { minimumFractionDigits: 2,
+                  maximumFractionDigits: 2 }) %>
+              </td>
+            </tr>
+            <tr class="tabela-total-linha">
+              <!--Variavel calculada usando os valores dos produtos e do frete-->
+              <td class="fw-bold text-uppercase">Total</td>
+              <td class="text-end fw-bold">
+                R$ <%= total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="text-end">
+          <a href="" class="btn btn-finalizar px-5 py-2 rounded-pill shadow-sm text-white w-100">Finalizar Pedido</a>
+        </div>
+      </div>
+    </div>
+
+  </div>

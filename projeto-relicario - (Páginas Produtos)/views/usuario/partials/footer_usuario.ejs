@@ -1,0 +1,23 @@
+<div class="mt-auto">
+    
+    <!-- Detalhe Vitral -->
+    <div class="text-center footer-vitral">
+        <img src="/imagens/vitral_inicio.png" class="img-fluid">
+    </div>
+    
+    <!-- Footer -->
+    <footer class="text-white text-center py-4 footer-relicario">
+        <div class="container">
+            <small>Relicário &copy; 2026</small>
+        </div>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const eventosProdutos = new EventSource('/eventos/produtos');
+    eventosProdutos.onmessage = () => window.location.reload();
+</script>
+
+</body>
+</html>
