@@ -1,0 +1,174 @@
+<%- include('../partials/header_usuario') %>
+
+  <div class="container-menu-categorias">
+    <%- include('../partials/menu_usuario') %>
+  </div>
+
+  <main class="container my-5 py-3">
+    <!-- Seção Principal de Detalhes do Produto -->
+    <div class="row align-items-center mb-5 pb-4">
+      <!-- Coluna Esquerda: Imagem do Produto -->
+      <div class="col-md-6 text-center pe-md-5">
+        <div class="text-start mb-3">
+          <a href="javascript:history.back()" class="btn btn-voltar px-4 rounded-pill shadow-sm">Voltar</a>
+        </div>
+
+        <img src="/uploads/<%= produto.imagem %>" alt="<%= produto.nome %>"
+          class="img-fluid rounded produto-detalhe-imagem">
+      </div>
+
+      <!--ADICIONAR BOTÃO VOLTAR-->
+
+
+      <!-- Divisória vertical -->
+      <div class="col-md-6 ps-md-5 position-relative style-border-left">
+        <!-- Título do Produto -->
+        <h1 class="fw-bold mb-3 text-uppercase produto-detalhe-titulo">
+          <%= produto.nome %>
+        </h1>
+
+        <!-- Descrição -->
+        <p class="text-muted mb-4 fs-5 produto-detalhe-descricao">
+          <%= produto.descricao %>
+        </p>
+
+        <!-- Tags de Informações (Ano/Fabricação e Material) -->
+        <div class="d-flex gap-3 mb-4">
+          <% if (produto.fabricacao) { %>
+            <span class="badge rounded-pill px-4 py-2 produto-detalhe-badge">
+              <%= produto.fabricacao %>
+            </span>
+            <% } %>
+
+              <% if (produto.material) { %>
+                <span class="badge rounded-pill px-4 py-2 produto-detalhe-badge">
+                  <%= produto.material %>
+                </span>
+                <% } %>
+        </div>
+
+        <hr class="my-4 produto-linha">
+
+        <!-- Quantidade e Conservação -->
+        <div class="row mb-4 fs-5 produto-detalhe-info">
+          <div class="col-6">
+            <strong>Quantidade Disponível:</strong>
+            <%= produto.estoque %>
+          </div>
+          <div class="col-6">
+            <strong>Conservação:</strong>
+            <%= produto.conservacao %>
+          </div>
+        </div>
+
+        <!-- Preço e Botão de Comprar -->
+        <div class="text-center mt-4">
+          <h2 class="fw-bold mb-3 produto-detalhe-preco">
+            R$ <%= Number(produto.valor).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+              %>
+          </h2>
+          <form action="/carrinho/adicionar/<%= produto.id %>" method="POST">
+            <button type="submit" class="btn produto-detalhe-btn-comprar  px-5 py-2 rounded-pill shadow-sm text-white">
+              Adicionar ao Carrinho
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisória com Arabesco -->
+    <div class="arabesco-produto">
+      <img src="/imagens/arabesco_categorias.png" class="icone-decorativo">
+    </div>
+
+
+    <!--ADICIONAR SEÇÃO DE PRODUTOS SEMELHANTES-->
+
+    <!-- SEÇÃO DE PRODUTOS SEMELHANTES (CARROSSEL) -->
+    <% if (typeof produtosRelacionados !== 'undefined' && produtosRelacionados.length > 0) { %>
+      <section class="related-products my-5">
+        <h3 class="fw-bold mb-4 text-right">Itens Semelhantes</h3>
+        
+        <div class="carousel-container position-relative d-flex align-items-center">
+          <button type="button" class="carousel-btn prev-btn" id="prevBtn" aria-label="Anterior">&#10094;</button>
+          
+          <div class="carousel-track-container w-100 overflow-hidden">
+            <div class="carousel-track d-flex" id="carouselTrack">
+              <% produtosRelacionados.forEach(relacionado => { %>
+                <div class="product-card">
+                  <%- include('../componentes/card', { produto: relacionado }) %>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+
+          <button type="button" class="carousel-btn next-btn" id="nextBtn" aria-label="Próximo">&#10095;</button>
+        </div>
+      </section>
+    <% } %>
+
+  </main>
+
+  <%- include('../partials/footer_usuario') %>
+
+
+
+  <style>
+    .carousel-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 0;
+      scrollbar-width: none; /* Firefox */
+    }
+    .carousel-track::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    .product-card {
+      flex: 0 0 calc((100% - 40px) / 3);
+      box-sizing: border-box;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .prev-btn { left: -20px; }
+    .next-btn { right: -20px; }
+
+    @media (max-width: 768px) {
+      .product-card { flex: 0 0 calc((100% - 20px) / 2); }
+    }
+    @media (max-width: 480px) {
+      .product-card { flex: 0 0 100%; }
+    }
+  </style>
+
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (track && nextBtn && prevBtn) {
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+      });
+    }
+  </script>

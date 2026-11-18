@@ -1,0 +1,81 @@
+<%- include('usuario/partials/header_usuario') %>
+
+<!-- Torna o menu transparente e com posição absoluta apenas nesta página, sem mexer no CSS global -->
+<style>
+  .navbar-relicario {
+      position: absolute !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      width: 100%;
+      z-index: 10;
+  }
+  /* Remove margens e paddings indesejados para colar nas bordas */
+  .banner-full-width {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+  }
+</style>
+
+<%- include('usuario/partials/menu_usuario') %>
+
+<!-- Banner em Largura Total -->
+<div class="banner-full-width" style="position: relative; width: 100%;">
+  
+  <!-- Carrossel -->
+  <div id="carouselStacked" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="/imagens/banner1.png" class="d-block w-100" alt="Responsive image">
+      </div>
+      <div class="carousel-item">
+        <img src="/imagens/banner2.png" class="d-block w-100" alt="Responsive image">
+      </div>
+      <div class="carousel-item">
+        <img src="/imagens/banner3.png" class="d-block w-100" alt="Responsive image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo de Texto Sobreposto -->
+  <div class="banner-principal" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 2;">
+    <!-- Arabesco decorativo central -->
+    <div class="banner-arabesco">
+        <img src="/imagens/arabesco_banner.png" alt="Arabesco">
+    </div>
+
+    <div class="container text-center text-white">
+        <h1 class="banner-titulo-principal">RELICÁRIO</h1>
+        <h2 class="banner-subtitulo-bounce birthstone-bounce-regular">Antiquário</h2>
+        <p class="banner-subtitulo-citacao">"Preserve o passado, <br>
+          transforme o Presente"</p>
+        <a href="/usuario/categorias_lista" class="btn banner-btn-colecao">Ver Coleção</a>
+    </div>
+  </div>
+</div>
+
+<!-- Cards (Destaques) -->
+<div class="container my-5">
+  <h2 class="fw-bold mb-4 titulo-destaques">Destaques</h2>
+  
+  <div class="row g-4">
+  <% if (produtos && produtos.length > 0) { %>
+    <% produtos.forEach(function(produto) { %>
+      <% if (produto.destaque == 1 || produto.destaque === true) { %>
+        <div class="col-md-4">
+          <%- include('usuario/componentes/card', { produto: produto }) %>
+        </div>
+      <% } %>
+    <% }); %>
+  <% } else { %>
+    <div class="col-12">
+      <p class="text-muted">Nenhum produto cadastrado no momento.</p>
+    </div>
+  <% } %>
+  </div>
+</div>
+
+<%- include('usuario/partials/footer_usuario') %>

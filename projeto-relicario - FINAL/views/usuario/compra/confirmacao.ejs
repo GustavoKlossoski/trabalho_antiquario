@@ -1,0 +1,145 @@
+<%- include('../partials/header_usuario') %>
+
+<div class="container my-4 mb-5">
+
+    <!-- Botão Voltar -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="/carrinho" class="btn text-white px-4 rounded-pill shadow-sm" style="background-color: #3b0e0e;">Voltar</a>
+    </div>
+
+    <!-- Título Principal -->
+    <div class="mb-4">
+        <h2 style="color: #3b0e0e; font-family: serif;">
+            <span class="fw-bold">Confirmação da Compra</span>
+        </h2>
+    </div>
+
+    <!-- Formulário Único -->
+    <form action="/usuario/compra/finalizar" method="POST">
+        <div class="row g-4">
+
+            <!-- Coluna Esquerda: Endereço, Dados e Itens Comprados -->
+            <div class="col-12 col-lg-8">
+
+                <!-- 1. Endereço de Entrega -->
+                <div class="card p-4 shadow-sm mb-4" style="border: 1px solid #3b0e0e; border-radius: 12px; background-color: transparent;">
+                    <h2 class="h5 mb-3" style="color: #3b0e0e; font-family: serif; font-weight: bold;">Endereço de Entrega</h2>
+                    
+                    <div class="mb-3">
+                        <label for="nome" class="form-label" style="color: #3b0e0e;">Nome completo</label>
+                        <input type="text" class="form-control rounded-pill px-3" id="nome" name="nome" value="<%= usuario.nome %>" required placeholder="Digite seu nome completo" style="border-color: #3b0e0e;">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cep" class="form-label" style="color: #3b0e0e;">Digite seu CEP</label>
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control rounded-pill px-3" id="cep" name="cep" required placeholder="Digite seu CEP" style="border-color: #3b0e0e;">
+                            </div>
+                            <div class="col-md-6 mt-2 mt-md-0">
+                                <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" class="text-decoration-none" style="color: #3b0e0e; font-size: 0.95rem;">
+                                    Não sei meu CEP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="endereco" class="form-label" style="color: #3b0e0e;">Digite seu Endereço</label>
+                        <input type="text" class="form-control rounded-pill px-3" id="endereco" name="endereco" required placeholder="Rua, Avenida, Número, Complemento" style="border-color: #3b0e0e;">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cidade" class="form-label" style="color: #3b0e0e;">Digite sua Cidade</label>
+                            <input type="text" class="form-control rounded-pill px-3" id="cidade" name="cidade" required placeholder="Digite sua Cidade" style="border-color: #3b0e0e;">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="estado" class="form-label" style="color: #3b0e0e;">Digite seu Estado</label>
+                            <input type="text" class="form-control rounded-pill px-3" id="estado" name="estado" required placeholder="Digite seu Estado" style="border-color: #3b0e0e;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Seus Dados -->
+                <div class="card p-4 shadow-sm mb-4" style="border: 1px solid #3b0e0e; border-radius: 12px; background-color: transparent;">
+                    <div class="card-body p-0">
+                        <h2 class="h5 mb-3" style="color: #3b0e0e; font-family: serif; font-weight: bold;">Seus dados cadastrados</h2>
+                        <dl class="row mb-0" style="color: #3b0e0e;">
+                            <dt class="col-4 col-sm-3">Nome</dt>
+                            <dd class="col-8 col-sm-9"><%= usuario.nome %></dd>
+                            <dt class="col-4 col-sm-3">E-mail</dt>
+                            <dd class="col-8 col-sm-9"><%= usuario.email %></dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <!-- 3. Itens do Carrinho / Comprados -->
+                <div class="card p-4 shadow-sm mb-4" style="border: 1px solid #3b0e0e; border-radius: 12px; background-color: transparent;">
+                    <h2 class="h5 mb-3" style="color: #3b0e0e; font-family: serif; font-weight: bold;">Itens da Compra</h2>
+                    
+                    <% if (typeof produtosCarrinho !== 'undefined' && produtosCarrinho.length > 0) { %>
+                        <div class="list-group list-group-flush bg-transparent">
+                            <% produtosCarrinho.forEach(function(item) { %>
+                                <div class="list-group-item d-flex align-items-center justify-content-between bg-transparent px-0" style="border-color: #3b0e0e33;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img src="/uploads/<%= item.imagem %>" alt="<%= item.nome %>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 1px solid #3b0e0e;">
+                                        <div>
+                                            <h6 class="mb-1" style="color: #3b0e0e; font-weight: bold;"><%= item.nome %></h6>
+                                            <small class="text-muted">Qtd: <%= item.quantidade %></small>
+                                        </div>
+                                    </div>
+                                    <span style="color: #3b0e0e; font-weight: bold;">R$ <%= (item.valor * item.quantidade).toFixed(2).replace('.', ',') %></span>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } else { %>
+                        <p class="text-muted mb-0">Nenhum item listado.</p>
+                    <% } %>
+                </div>
+
+            </div>
+
+            <!-- Coluna Direita: Valor Total e Forma de Pagamento -->
+            <div class="col-12 col-lg-4">
+                <div class="card p-4 shadow-sm mb-4" style="border: 1px solid #3b0e0e; border-radius: 12px; background-color: transparent;">
+                    <div class="card-body p-0">
+                        <p class="mb-1 text-secondary">Valor total</p>
+                        <p class="mb-4" style="color: #3b0e0e; font-size: 1.5rem; font-weight: bold;">R$ <%= total.toFixed(2).replace('.', ',') %></p>
+
+                        <h2 class="h5 mb-3" style="color: #3b0e0e; font-family: serif; font-weight: bold;">Forma de pagamento</h2>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="pagamento" id="pg-pix" value="pix" checked style="border-color: #3b0e0e;">
+                            <label class="form-check-label" for="pg-pix" style="color: #3b0e0e;"><i class="bi bi-qr-code me-2"></i>Pix</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="pagamento" id="pg-credito" value="credito" style="border-color: #3b0e0e;">
+                            <label class="form-check-label" for="pg-credito" style="color: #3b0e0e;"><i class="bi bi-credit-card me-2"></i>Cartão de crédito</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="pagamento" id="pg-debito" value="debito" style="border-color: #3b0e0e;">
+                            <label class="form-check-label" for="pg-debito" style="color: #3b0e0e;"><i class="bi bi-credit-card-2-front me-2"></i>Cartão de débito</label>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="radio" name="pagamento" id="pg-boleto" value="boleto" style="border-color: #3b0e0e;">
+                            <label class="form-check-label" for="pg-boleto" style="color: #3b0e0e;"><i class="bi bi-upc me-2"></i>Boleto bancário</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Botão Final Centralizado -->
+        <div class="text-center mt-3">
+            <button type="submit" class="btn text-white px-5 py-2 rounded-pill shadow-sm" style="background-color: #3b0e0e; font-size: 1.1rem;">
+                Finalizar compra &rarr;
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<%- include('../partials/footer_usuario') %>

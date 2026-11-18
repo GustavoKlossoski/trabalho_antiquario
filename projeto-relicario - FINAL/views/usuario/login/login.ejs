@@ -1,0 +1,65 @@
+<%- include('../partials/header_usuario') %>
+
+<main class="py-5 min-vh-100 d-flex align-items-center justify-content-center bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Aumentado de col-lg-4 para col-lg-6 / col-xl-5 para dar mais largura ao card -->
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+
+        <!-- Card de Login -->
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden position-relative text-white" style="background-color: #2b080c;">
+          
+          <!-- Imagem de Fundo Interna -->
+          <img src="/imagens/tapete_fundo_login.png" alt="Fundo Login" class="position-absolute top-0 start-0 w-100 h-100" style="object-fit: cover; opacity: 0.35; z-index: 1;">
+
+          <!-- Conteúdo com padding interno maior (p-5) para expandir as proporções -->
+          <div class="card-body p-4 p-sm-5 px-lg-5 py-lg-5 position-relative" style="z-index: 2;">
+            
+            <!-- Logo e Título -->
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+              <img src="/imagens/logo_relicario.png" alt="Logo Relicário" class="img-fluid" style="max-height: 45px;">
+              <h1 class="h2 mb-0 fw-normal text-capitalize" style="font-family: 'Georgia', 'Times New Roman', serif; color: #f4e8d3; font-style: italic;">
+                Relicário
+              </h1>
+            </div>
+
+            <% if (sucesso) { %>
+              <div class="alert alert-success py-2 fs-6"><i class="bi bi-check-circle me-1"></i>Cadastro realizado! Faça login para continuar.</div>
+            <% } %>
+
+            <% if (erro) { %>
+              <div class="alert alert-danger py-2 fs-6"><i class="bi bi-exclamation-circle me-1"></i><%= erro %></div>
+            <% } %>
+
+            <form action="/usuario/login" method="POST">
+              <div class="mb-3">
+                <label for="email" class="form-label small mb-1 opacity-90">Usuário:</label>
+                <input type="email" class="form-control rounded-pill px-3 py-2 border-0" id="email" name="email" value="<%= email %>" required style="background-color: #ffffff;">
+              </div>
+
+              <div class="mb-4">
+                <label for="senha" class="form-label small mb-1 opacity-90">Senha:</label>
+                <input type="password" class="form-control rounded-pill px-3 py-2 border-0" id="senha" name="senha" required style="background-color: #ffffff;">
+              </div>
+
+              <div class="d-flex justify-content-center mb-3">
+                <button type="submit" class="btn btn-light rounded-pill px-5 py-2 fw-semibold text-dark shadow-sm">
+                  Entrar
+                </button>
+              </div>
+            </form>
+
+            <!-- Links -->
+            <div class="text-center mt-3 d-flex flex-column gap-1 small">
+              <a href="/usuario/cadastro" class="text-white text-decoration-none opacity-75 hover-opacity-100">Cadastrar</a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer_usuario') %>
